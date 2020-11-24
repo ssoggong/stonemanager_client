@@ -30,27 +30,28 @@ a{
   .projectName li{
     padding: 8px 12px;
   }
-  
-  .myProfile{
-    padding: 50px 50px;
+
+  .projectName li:hover{
+    background-color:#c4d6e9;
+    border-radius: 4px;
   }
   
   .info{
     font-size:25px;
     list-style: none;
     display: flex;
-  }
-  
-  .userImg{
-    padding-top:10px;
-    height:3vmin;
+    margin: 10px
   }
   
   .info li{
-    padding: 8px 12px;
+    padding: 8px 8px;
   }
   
   .info li:hover{
     background-color:#c4d6e9;
     border-radius: 4px;
+  }
+
+  .userImg{
+    height:4vmin;
   }
