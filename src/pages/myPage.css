@@ -1,0 +1,56 @@
+.myPage{
+    text-align: center;
+}
+
+body{
+    font-family: 'nanumsquare';
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+    color:white;
+}
+
+.blueNav{
+    background: #03519F;
+    display: flex;
+    color: white;
+    width:100%;
+    padding: 8px 15px;
+    justify-content: space-between;
+  }
+  
+  .projectName{
+    display: flex;
+    list-style: none;
+    font-size:40px;
+  }
+  
+  .projectName li{
+    padding: 8px 12px;
+  }
+  
+  .myProfile{
+    padding: 50px 50px;
+  }
+  
+  .info{
+    font-size:25px;
+    list-style: none;
+    display: flex;
+  }
+  
+  .userImg{
+    padding-top:10px;
+    height:3vmin;
+  }
+  
+  .info li{
+    padding: 8px 12px;
+  }
+  
+  .info li:hover{
+    background-color:#c4d6e9;
+    border-radius: 4px;
+  }
