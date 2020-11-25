@@ -1,5 +1,6 @@
 .projectList{
     display: flex;
+    align-items: center;
 }
 
 .projectList li{

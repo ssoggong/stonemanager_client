@@ -18,8 +18,8 @@ class main extends Component {
                 </Form>
             </Navbar>
 
-            <div className="projectList">
-                    <Card style={{ width: '18rem' }}>
+            <div className="col-sm-1 col-md-1 col-lg-1 box">
+                    <Card style={{ width: '18rem', display:'flex' }}>
                         <Card.Body>
                             <Card.Title>Project 1</Card.Title>
                             <Card.Text>
@@ -36,6 +36,22 @@ class main extends Component {
                             abc
                             </Card.Text>
                             <Button variant="primary">Go</Button>
+                        </Card.Body>
+                    </Card>
+
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Body>
+                            <Card.Title>Project 3</Card.Title>
+                            <Card.Text>
+                            abc
+                            </Card.Text>
+                            <Button variant="primary">Go</Button>
+                        </Card.Body>
+                    </Card>
+
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Body>
+                            <Button variant="primary">New Proejct</Button>
                         </Card.Body>
                     </Card>
             </div>
