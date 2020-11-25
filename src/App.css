@@ -1,7 +1,91 @@
-.ee{
-  background-color: blueviolet;
-  height : 80px;
-  line-height : 80px;
-  color : antiquewhite;
-  font-size:20pt;
-}
+.App {
+    text-align: center;
+  }
+  
+  body{
+    font-family: 'nanumsquare';
+    margin: 0;
+  }
+  
+  a{
+    text-decoration: none;
+    color:white;
+  }
+  
+  .blueNav{
+    background: #03519F;
+    display: flex;
+    color: white;
+    padding: 8px 15px;
+    justify-content: space-between;
+  }
+  
+  .projectName{
+    display: flex;
+    list-style: none;
+    font-size:40px;
+  }
+  
+  .projectName li{
+    padding: 8px 12px;
+  }
+  
+  .myProfile{
+    padding: 50px 50px;
+  }
+  
+  .myPage{
+    font-size:25px;
+    list-style: none;
+    display: flex;
+  }
+  
+  .userImg{
+    padding-top:10px;
+    height:3vmin;
+  }
+  
+  .myPage li{
+    padding: 8px 12px;
+  }
+  
+  .mypage li:hover{
+    background-color:#c4d6e9;
+    border-radius: 4px;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
