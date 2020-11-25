@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, Form, Card, Button, Container, Row, Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 class main extends Component {
 
@@ -7,7 +8,11 @@ class main extends Component {
         return (
             <div className="main">
                 <Navbar bg="primary" variant="dark">
-                    <Navbar.Brand href=" "><b>Stone Manager</b></Navbar.Brand>
+                    <Link to='#'>
+                        <Navbar.Brand>
+                            <b>Stone Manager</b>
+                        </Navbar.Brand>
+                    </Link>
                     <Nav className="mr-auto">
 
                     </Nav>
@@ -26,8 +31,10 @@ class main extends Component {
                                     <Card.Title>Project 1</Card.Title>
                                     <Card.Text>
                                         abc
-                                </Card.Text>
-                                        <Button href="home" variant="primary">Go</Button>
+                                    </Card.Text>
+                                    <Link to='home'>
+                                        <Button variant="primary">Go</Button>
+                                    </Link>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -39,7 +46,9 @@ class main extends Component {
                                     <Card.Text>
                                         abc
                                 </Card.Text>
-                                        <Button href="home" variant="primary">Go</Button>
+                                <Link to='home'>
+                                        <Button variant="primary">Go</Button>
+                                    </Link>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -51,9 +60,9 @@ class main extends Component {
                                     <Card.Text>
                                         abc
                                 </Card.Text>
-                                    <a href="home">
+                                    <Link to='home'>
                                         <Button variant="primary">Go</Button>
-                                    </a>
+                                    </Link>
                                 </Card.Body>
                             </Card>
                         </Col>

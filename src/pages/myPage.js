@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Nav, Navbar, Form, Card, Button} from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 class myPage extends Component {
 
@@ -7,13 +8,20 @@ class myPage extends Component {
     return (
         <div className="myPage2">         
             <Navbar bg="primary" variant="dark">
-                <Navbar.Brand href="/"><b>Stone Manager</b></Navbar.Brand>
+                <Link to='/'>
+                    <Navbar.Brand>
+                        <b>Stone Manager</b>
+                    </Navbar.Brand>
+                </Link>
                 <Nav className="mr-auto">
-                    <Nav.Link href="home">Home</Nav.Link>
+                    <Link to='home'>
+                        <Nav.Link></Nav.Link>
+                    </Link>
                 </Nav>
                 <Form inline>
-                    
-                    <Button href=" " variant="outline-light">마이페이지</Button>
+                <Link to='#'>
+                    <Button variant="outline-light">마이페이지</Button>
+                </Link>
                     &nbsp;&nbsp;
                     <Button variant="outline-light">로그아웃</Button>
                 </Form>
