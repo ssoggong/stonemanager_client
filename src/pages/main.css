@@ -1,8 +1,0 @@
-.projectList{
-    display: flex;
-    align-items: center;
-}
-
-.projectList li{
-    padding: 5px 5px;
-}

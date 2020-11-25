@@ -27,9 +27,7 @@ class main extends Component {
                                     <Card.Text>
                                         abc
                                 </Card.Text>
-                                    <a href="home">
-                                        <Button variant="primary">Go</Button>
-                                    </a>
+                                        <Button href="home" variant="primary">Go</Button>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -41,9 +39,7 @@ class main extends Component {
                                     <Card.Text>
                                         abc
                                 </Card.Text>
-                                    <a href="home">
-                                        <Button variant="primary">Go</Button>
-                                    </a>
+                                        <Button href="home" variant="primary">Go</Button>
                                 </Card.Body>
                             </Card>
                         </Col>

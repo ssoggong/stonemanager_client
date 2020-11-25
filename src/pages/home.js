@@ -12,13 +12,14 @@ class home extends Component {
                     <Nav.Link href=" ">Home</Nav.Link>
                 </Nav>
                 <Form inline>
-                    <Button variant="outline-light">마이페이지</Button>
+                    
+                    <Button href="myPage" variant="outline-light">마이페이지</Button>
                     &nbsp;&nbsp;
                     <Button variant="outline-light">로그아웃</Button>
                 </Form>
             </Navbar>  
-            
-                  
+
+            <b>This is home</b>
         </div>
     );
   }
