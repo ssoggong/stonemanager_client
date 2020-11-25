@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter, Route } from 'react-router-dom';
 
-import Main from './pages/main.js'
-import MyPage from './pages/myPage.js'
+import { Main, MyPage, Home} from './pages'
 
 class App extends Component {
     constructor(props){
@@ -18,6 +17,7 @@ class App extends Component {
                 <BrowserRouter>
                     <Route path="/" component={Main} exact />
                     <Route path="/myPage" component={MyPage} />
+                    <Route path="/home" component={Home} />
                 </BrowserRouter>
             </div>
         );

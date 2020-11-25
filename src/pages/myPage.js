@@ -19,9 +19,6 @@ class myPage extends Component {
             <li><b>로그아웃</b></li>
           </div>
         </div>
-        <div>
-          ddd
-        </div>
       </div>
       
     );
