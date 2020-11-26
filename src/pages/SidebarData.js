@@ -2,7 +2,6 @@ import React from 'react'
 import * as AiIcons from 'react-icons/ai';
 
 export const SidebarData=[
-    <hr style={{color:"white"}}></hr>,
     {
         title: 'Home',
         path: '/home',
