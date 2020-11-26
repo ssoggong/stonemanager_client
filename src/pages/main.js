@@ -8,6 +8,7 @@ import {
 import { Login } from './login.js'
 import {Register} from "./register";
 import {FindPW} from "./findPassword";
+import {CreateProject} from "./createProject";
 
 class main extends Component {
 
@@ -83,7 +84,9 @@ class main extends Component {
                         <Col sm>
                             <Card style={{ width: '18rem' }}>
                                 <Card.Body>
+                                    <Link to="/createProject">
                                     <Button variant="primary">New Proejct</Button>
+                                    </Link>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -93,6 +96,7 @@ class main extends Component {
 
 
                 <BrowserRouter>
+                    <Route path="/createProject" component={CreateProject}/>
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register}/>
                     <Route path="/findPassword" component={FindPW} />
