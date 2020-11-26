@@ -11,8 +11,9 @@
 
   .homeContent{
     display:flex;
-    height: 90vh;
+    height: 30vh;
     align-items: center;
     justify-self: center;
     font-size: 3rem;
   }
+
