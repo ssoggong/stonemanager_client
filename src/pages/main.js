@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { Nav, Navbar, Form, Card, Button, Container, Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
+import {
+    Route,
+    Link,
+    BrowserRouter,
+} from 'react-router-dom';
+import { Login } from './login.js'
+import {Register} from "./register";
+import {FindPW} from "./findPassword";
 
 class main extends Component {
 
@@ -17,9 +24,13 @@ class main extends Component {
 
                     </Nav>
                     <Form inline>
-                        <Button variant="outline-light">회원가입</Button>
+                        <Link to="/register">
+                            <Button variant="outline-light">회원가입</Button>
+                        </Link>
                     &nbsp;&nbsp;
-                    <Button variant="outline-light">로그인</Button>
+                        <Link to="/login">
+                            <Button variant="outline-light">로그인</Button>
+                        </Link>
                     </Form>
                 </Navbar>
 
@@ -81,6 +92,11 @@ class main extends Component {
 
 
 
+                <BrowserRouter>
+                    <Route path="/login" component={Login} />
+                    <Route path="/register" component={Register}/>
+                    <Route path="/findPassword" component={FindPW} />
+                </BrowserRouter>
 
             </div>
         );
