@@ -35,7 +35,12 @@ function Navbar_() {
                 <AiIcons.AiOutlineClose />
               </Link>
             </li>
-        
+            <div className='project-info' style={{color:"white", marginLeft:25}}>
+              <h2> 쏘꽁 </h2>
+              <h4> 소프트웨어공학개론 </h4>
+              <h4> 최은만 교수님</h4>
+            </div>
+            <hr />
             {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
