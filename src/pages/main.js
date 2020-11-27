@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, Form, Card, Button, Container, Row, Col } from 'react-bootstrap'
+import { ProgressBar, Nav, Navbar, Form, Card, Button, Container, Row, Col } from 'react-bootstrap'
 import {
     Route,
     Link,
@@ -9,9 +9,12 @@ import { Login } from './login.js'
 import {Register} from "./register";
 import {FindPW} from "./findPassword";
 import {CreateProject} from "./createProject";
+const now1 = 90;
+const now2 = 83;
+const now3 = 70;
 
 class main extends Component {
-
+    
     render() {
         return (
             <div className="main">
@@ -40,9 +43,10 @@ class main extends Component {
                         <Col sm>
                             <Card style={{ width: '18rem', display: 'flex' }}>
                                 <Card.Body>
-                                    <Card.Title>Project 1</Card.Title>
+                                    <Card.Title>쏘꽁</Card.Title>
                                     <Card.Text>
-                                        abc
+                                        소프트웨어공학개론
+                                        <ProgressBar style={{width:250, marginTop:15, marginRight:50}} now={now1} label={`${now1}%`} /> 
                                     </Card.Text>
                                     <Link to='home'>
                                         <Button variant="primary">Go</Button>
@@ -54,9 +58,10 @@ class main extends Component {
                         <Col sm>
                             <Card style={{ width: '18rem' }}>
                                 <Card.Body>
-                                    <Card.Title>Project 2</Card.Title>
+                                    <Card.Title>일쩜오</Card.Title>
                                     <Card.Text>
-                                        abc
+                                        개별연구
+                                        <ProgressBar style={{width:250, marginTop:15, marginRight:50}} now={now2} label={`${now2}%`} /> 
                                 </Card.Text>
                                 <Link to='home'>
                                         <Button variant="primary">Go</Button>
@@ -68,9 +73,10 @@ class main extends Component {
                         <Col sm>
                             <Card style={{ width: '18rem' }}>
                                 <Card.Body>
-                                    <Card.Title>Project 3</Card.Title>
+                                    <Card.Title>응답하라 2016</Card.Title>
                                     <Card.Text>
-                                        abc
+                                        기업사회맞춤형프로젝트1
+                                        <ProgressBar style={{width:250, marginTop:15, marginRight:50}} now={now3} label={`${now3}%`} /> 
                                 </Card.Text>
                                     <Link to='home'>
                                         <Button variant="primary">Go</Button>

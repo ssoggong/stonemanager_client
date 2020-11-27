@@ -1,14 +1,41 @@
 import React from 'react';
 import { ProgressBar, Container, Row, Col, Card, Button } from 'react-bootstrap';
 import '../App.css';
+import CanvasJSReact from '../canvasjs.react';
 
 function homeContent() {
     const now = 90;
     const progressInstance = <ProgressBar now={now} label={`${now}%`} />;
+    
+    var CanvasJS = CanvasJSReact.CanvasJS;
+    var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
+    const options = {
+        animationEnabled: true,
+        subtitles: [{
+            text: "40% 최윤호",
+            verticalAlign: "center",
+            fontSize: 24,
+            dockInsidePlotArea: true
+        }],
+        data: [{
+            type: "doughnut",
+            showInLegend: true,
+            indexLabel: "{name}: {y}",
+            yValueFormatString: "#,###'%'",
+            dataPoints: [
+                { name: "최윤호", y: 40 },
+                { name: "박종근", y: 20 },
+                { name: "김영훈", y: 22 },
+                { name: "최고운", y: 18 },
+            ]
+        }]
+    }
+
     return (
         <div className='homeContent'>
             <Container>
-                <Row style={{marginTop:300, marginLeft:100}}>
+                <Row style={{marginTop:500, marginLeft:100}}>
                     <Col sm> 
                         <h1>진행률</h1> 
                     </Col>
@@ -16,12 +43,16 @@ function homeContent() {
                         <ProgressBar style={{width:700, marginTop:15, marginRight:50}} now={now} label={`${now}%`} /> 
                     </Col>
                 </Row>
-                <Row style={{marginTop:150, marginLeft:100}}>
-                    <Col sm> <h1> 참여율 </h1> </Col>
-                    <Col sm> <h1> 디데이 </h1> </Col>
+                <Row style={{marginTop:50, marginLeft:100}}>
+                    <Col sm> <h1> 참여율 </h1></Col>
+                    <Col sm> <h1> D-Day </h1> </Col>
                 </Row>
                 <Row style={{marginTop:25, marginLeft:100}}>
-                    <Col sm={6}> <h1> Graph </h1> </Col>
+                    <Col sm={6}> 
+                        <div>
+                            <CanvasJSChart options = {options} />
+                        </div>                  
+                    </Col>
                     <Col sm={3}>
                         <Card style={{ width: '15rem', display: 'flex' }}>
                             <Card.Body>
