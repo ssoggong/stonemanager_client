@@ -6,9 +6,10 @@ import {
 } from "react-bootstrap";
 import './modal.css'
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export async function getSubject() {
-    return axios.get('/api/users/subject',{
+    return axios.get('/api/users/subject', {
         headers: {
             "Content-Type": "application/json",
             "userIndex": 1,
@@ -38,10 +39,20 @@ export class CreateProject extends React.Component {
     }
 
     render() {
+        const {
+            show,
+            handleClose,
+            projectName,
+            projectSubject,
+            projectProgress,
+            onChange,
+            onCreate } = this.props;
         return (
             <Modal
-                show={true}
-                onHide={() => window.history.back()}
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
                 dialogClassName="modal-90w"
                 aria-labelledby="example-custom-modal-styling-title"
             >
@@ -66,17 +77,17 @@ export class CreateProject extends React.Component {
 
                             <Form.Group controlId="teamName">
                                 <Form.Label>팀명</Form.Label>
-                                <Form.Control type="text" placeholder="팀명을 입력하세요."/>
+                                <Form.Control type="text" placeholder="팀명을 입력하세요." />
                             </Form.Group>
 
                             <Form.Group controlId="projectName">
                                 <Form.Label>프로젝트 이름</Form.Label>
-                                <Form.Control type="text" placeholder="프로젝트 이름을 입력하세요."/>
+                                <Form.Control type="text" placeholder="프로젝트 이름을 입력하세요." />
                             </Form.Group>
 
                             <Form.Group controlId="passwordCheck">
                                 <Form.Label>팀원찾기</Form.Label>
-                                <Form.Control type="text" placeholder="초대할 팀원 이름 검색"/>
+                                <Form.Control type="text" placeholder="초대할 팀원 이름 검색" />
                                 <button>검색</button>
                             </Form.Group>
 
@@ -88,10 +99,12 @@ export class CreateProject extends React.Component {
                             </Form.Group>
 
                             <div className="modalButtonCenter">
-                                <Button variant="primary" type="submit">
-                                    확인
+                                <Link to='/'>
+                                    <Button onClick={onCreate} variant="primary" type="submit">
+                                        확인
                                 </Button>
-                                <Button onClick={() => window.history.back()} variant="secondary">
+                                </Link>
+                                <Button onClick={handleClose} variant="secondary">
                                     취소
                                 </Button>
                             </div>
@@ -102,4 +115,3 @@ export class CreateProject extends React.Component {
         );
     }
 }
-
