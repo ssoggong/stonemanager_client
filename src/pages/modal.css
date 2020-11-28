@@ -1,0 +1,12 @@
+.modalradio{
+    margin-left : 30px;
+}
+
+.modaltitle{
+    text-align : center;
+}
+
+.modalButtonCenter{
+    display: flex;
+    justify-content: center;
+}

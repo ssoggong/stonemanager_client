@@ -1,67 +1,62 @@
-import React, { Component } from 'react';
-import {Nav, Navbar, Form, Card, Button} from 'react-bootstrap'
+import React from 'react';
+import { Nav, Navbar, Form, Button, Container, Row, Col } from 'react-bootstrap'
+import {
+    Route,
+    Link,
+    BrowserRouter,
+} from 'react-router-dom';
+import { Login } from './login.js'
+import { Register } from "./register";
+import { FindPW } from "./findPassword";
+import { CreateProject } from "./createProject";
+import ProjectList from './ProjectList';
 
-class main extends Component {
-
-  render() {
+function Main() {
     return (
         <div className="main">
             <Navbar bg="primary" variant="dark">
-                <Navbar.Brand href="#home"><b>Stone Manager</b></Navbar.Brand>
+                <Link to='#'>
+                    <Navbar.Brand>
+                        <b>Stone Manager</b>
+                    </Navbar.Brand>
+                </Link>
                 <Nav className="mr-auto">
-                    <Nav.Link href="#home">내 정보</Nav.Link>
+
                 </Nav>
                 <Form inline>
-                    <Button variant="outline-light">회원가입</Button>
+                    <Link to="/register">
+                        <Button variant="outline-light">회원가입</Button>
+                    </Link>
                     &nbsp;&nbsp;
-                    <Button variant="outline-light">로그인</Button>
+                        <Link to="/login">
+                        <Button variant="outline-light">로그인</Button>
+                    </Link>
                 </Form>
             </Navbar>
 
-            <div className="col-sm-1 col-md-1 col-lg-1 box">
-                    <Card style={{ width: '18rem', display:'flex' }}>
-                        <Card.Body>
-                            <Card.Title>Project 1</Card.Title>
-                            <Card.Text>
-                            abc
-                            </Card.Text>
-                            <Button variant="primary">Go</Button>
-                        </Card.Body>
-                    </Card>
-
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Title>Project 2</Card.Title>
-                            <Card.Text>
-                            abc
-                            </Card.Text>
-                            <Button variant="primary">Go</Button>
-                        </Card.Body>
-                    </Card>
-
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Title>Project 3</Card.Title>
-                            <Card.Text>
-                            abc
-                            </Card.Text>
-                            <Button variant="primary">Go</Button>
-                        </Card.Body>
-                    </Card>
-
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Body>
+            <Container>            
+                <ProjectList />
+                <Row style={{ marginLeft: 470 }}>
+                    <Col sm>
+                        <Link to="/createProject">
                             <Button variant="primary">New Proejct</Button>
-                        </Card.Body>
-                    </Card>
-            </div>
-            
-            
+                        </Link>
+                    </Col>
+                </Row>
+            </Container>
 
-            
+
+
+            <BrowserRouter>
+                <Route path="/createProject" component={CreateProject} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
+                <Route path="/findPassword" component={FindPW} />
+            </BrowserRouter>
+
         </div>
     );
-  }
+
 }
 
-export default main;
+export default Main;
