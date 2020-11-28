@@ -10,21 +10,8 @@ import { Register } from "./register";
 import { FindPW } from "./findPassword";
 import { CreateProject } from "./createProject";
 import ProjectList from './ProjectList';
-import axios from 'axios'
 
-export function getSubject() {
-    debugger;
-    axios.get('http://ec2-13-125-249-225.ap-northeast-2.compute.amazonaws.com:8080/users/subject',{
-        headers: {
-            "Content-Type": "application/json",
-            "userIndex": 1
-        }
-    })
-}
 class Main extends Component {
-    componentDidMount() {
-        getSubject()
-    }
     render() {
         return (
             <div className="main">
