@@ -17,6 +17,7 @@ function schedule() {
                                 {title: '최종 발표', date: '2020-12-01'}
                             ]}
                             style={{width:'300'}} />
+                            asdasdasd
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@ import { ProgressBar, Container, Row, Col, Card, Button } from 'react-bootstrap'
 import '../App.css';
 import CanvasJSReact from '../canvasjs.react';
 
-function homeContent() {
+function HomeContent() {
     const now = 90;
     const progressInstance = <ProgressBar now={now} label={`${now}%`} />;
     
@@ -35,7 +35,7 @@ function homeContent() {
     return (
         <div className='homeContent'>
             <Container>
-                <Row style={{marginTop:500, marginLeft:100}}>
+                <Row style={{marginTop:600, marginLeft:100}}>
                     <Col sm> 
                         <h1>진행률</h1> 
                     </Col>
@@ -43,8 +43,8 @@ function homeContent() {
                         <ProgressBar style={{width:700, marginTop:15, marginRight:50}} now={now} label={`${now}%`} /> 
                     </Col>
                 </Row>
-                <Row style={{marginTop:50, marginLeft:100}}>
-                    <Col sm> <h1> 참여율 </h1></Col>
+                <Row style={{marginTop:150, marginLeft:100}}>
+                    <Col sm> <h1> 참여율 </h1></Col>{' '}
                     <Col sm> <h1> D-Day </h1> </Col>
                 </Row>
                 <Row style={{marginTop:25, marginLeft:100}}>
@@ -77,4 +77,4 @@ function homeContent() {
     )
 }
 
-export default homeContent;
+export default HomeContent;
