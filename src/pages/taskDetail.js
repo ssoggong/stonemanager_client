@@ -67,6 +67,7 @@ export function TaskDetail() {
                                     <Col md={4}>
                                         <AiIcons.AiOutlineCheckSquare style={{ marginBottom:2 }}/>{' '}
                                         Check List
+                                        
                                     </Col>                                    
                                 </Row>
                             </Col>
