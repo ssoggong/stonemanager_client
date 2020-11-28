@@ -10,7 +10,6 @@ import { Register } from "./register";
 import { FindPW } from "./findPassword";
 import { CreateProject } from "./createProject";
 import ProjectList from './ProjectList';
-import axios from 'axios';
 
 function Main() {
     const [inputs, setInputs] = useState({
