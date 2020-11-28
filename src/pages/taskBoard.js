@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import {v4 as uuid} from "uuid";
-import {Row} from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import {
-    Link
+    Link, BrowserRouter, Route,
 } from 'react-router-dom';
+import {TaskDetail} from './taskDetail';
 
 const itemsFromBackend = [
   { id: uuid(), content: "First task", manager: "최고운 최윤호", taskDate: "2020.12.01", tagName: "front-end", tagColor: "lightblue"},
@@ -73,7 +74,8 @@ const onDragEnd = (result, columns, setColumns) => {
 function TaskBoard() {
   const [columns, setColumns] = useState(columnsFromBackend);
   return (
-    <div style={{ display: "flex", justifyContent: "center", height: "100%", marginTop:100, marginLeft:100}}>
+    <div className="TaskBoard" 
+    style={{ display: "flex", justifyContent: "center", height: "100%", marginTop:100, marginLeft:100}}>
       <DragDropContext
         onDragEnd={result => onDragEnd(result, columns, setColumns)}
       >
@@ -159,7 +161,11 @@ function TaskBoard() {
           );
         })}
       </DragDropContext>
+      <BrowserRouter>
+        <Route path="/taskDetail" component={TaskDetail}/>
+      </BrowserRouter>
     </div>
+    
   );
 }
 

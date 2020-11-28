@@ -32,7 +32,7 @@ function Navbar_() {
           <ul className='nav-menu-items' onClick={showSidebar}>
             <li className='navbar-toggle'>
               <Link to='#' className='menu-bars'>
-                <AiIcons.AiOutlineClose />
+                <AiIcons.AiOutlineClose style={{width:50, fontSize:20}}/>
               </Link>
             </li>
             <div className='project-info' style={{color:"white", marginLeft:25}}>

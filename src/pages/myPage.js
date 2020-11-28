@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Alert, Container, Nav, Navbar, Form, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
-class myPage extends Component {
+class MyPage extends Component {
 
     render() {
         return (
@@ -63,4 +63,4 @@ class myPage extends Component {
     }
 }
 
-export default myPage;
+export default MyPage;
