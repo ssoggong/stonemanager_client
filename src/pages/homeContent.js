@@ -21,15 +21,15 @@ function HomeContent() {
     //     <li>{part}</li>
     // );
 
-    const projectInfoLists = contents.projectParticipateInfo;
-    const list = []
-    for(let i=0; i<projectInfoLists.length; i++){
-        const data = {
-            "name": projectInfoLists[i].memberName,
-            "y": projectInfoLists[i].participateRate
-        }
-        list.push(data);
-    }
+    // const projectInfoLists = contents.projectParticipateInfo;
+    // const list = []
+    // for(let i=0; i<projectInfoLists.length; i++){
+    //     const data = {
+    //         "name": projectInfoLists[i].memberName,
+    //         "y": projectInfoLists[i].participateRate
+    //     }
+    //     list.push(data);
+    // }
 
     const options = {
         animationEnabled: true,
@@ -44,7 +44,7 @@ function HomeContent() {
             showInLegend: true,
             indexLabel: "{name}: {y}",
             yValueFormatString: "#,###'%'",
-            dataPoints: list
+            dataPoints: [ {name: "최윤호", y:100}]
 
         }]
     }
