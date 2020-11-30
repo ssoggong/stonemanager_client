@@ -33,7 +33,8 @@ export async function getUserInfo() {
         .then(body => body.data);
 }
 
-export async function getHome() {
+
+export async function getHome( {userIndex} ) {
     return axios.get('/api/home', {
         headers: {
             "Content-Type": "application/json",
@@ -138,7 +139,10 @@ export async function postLogin(id, pw) {
         "password": pw
         },
         { headers : {"Content-Type": "application/json"} }
-    ).catch( error =>{
+    )
+        .then(response => response.data)
+        .then(body => body.data)
+        .catch( error =>{
         console.log('failed',error)
     })
 }

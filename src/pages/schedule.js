@@ -10,7 +10,6 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list'
-import styled from 'styled-components';
 
 function schedule() {
     const events = [
@@ -25,13 +24,13 @@ function schedule() {
         { title: 'event 4', date: '2020-11-27', backgroundColor: 'orange' },
         { title: 'event 5', date: '2020-11-28', backgroundColor: 'purple' }
     ];
-    const today = new Date();
-    const dateString = today.toLocalDateString('ko-KR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-    const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long' });
+    // const today = new Date();
+    // const dateString = today.toLocalDateString('ko-KR', {
+    //     year: 'numeric',
+    //     month: 'long',
+    //     day: 'numeric'
+    // });
+    // const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long' });
     return (
         <div className='schedule'>
             <div className="container">
@@ -50,7 +49,7 @@ function schedule() {
                             $(".modal-body").html("");
                             $(".modal-body").html(
                                 "<h4>" + "날짜: " +
-                                dateString + "</h4>" +
+                                arg.event.startStr + "</h4>" +
                                 "<h4>" + '태그: Class' + "</h4>" +
                                 "<h4>" + '담당자 : 최고운' + "</h4>" +
                                 "<h4>" + '메모: 살려주세요' + "</h4>")
