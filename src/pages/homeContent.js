@@ -28,7 +28,7 @@ function HomeContent() {
     //         console.log({part.memberName})
     //     </React.Fragment>        
     // ))}
-    
+
 
     const options = {
         animationEnabled: true,
