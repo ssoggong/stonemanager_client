@@ -1,8 +1,8 @@
 import React from 'react';
-import { ProgressBar, Card, Button, Col,Row } from 'react-bootstrap'
+import { ProgressBar, Card, Button, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
-function Project({ project }) {
+export function Project({ project }) {
     return (
         <span>
             <Card style={{ marginTop:50, marginLeft:50, height: '12rem', width: '18rem' }}>
@@ -21,7 +21,7 @@ function Project({ project }) {
     )
 }
 
-function ProjectList( { projects }) {
+function ProjectList( { projects } ) {
     return (
         <Row>
             {projects.map (project => (

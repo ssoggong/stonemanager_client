@@ -37,7 +37,7 @@ export async function getHome() {
     return axios.get('/api/home', {
         headers: {
             "Content-Type": "application/json",
-            "userIndex": 1,
+            "userIndex": 25,
         },
     })
         .then(response => response.data)
@@ -45,10 +45,10 @@ export async function getHome() {
 }
 
 export async function getProjectHome() {
-    return axios.get('/api/project/{projectIndex}', {
+    return axios.get('/api/project/31', {
         headers: {
             "Content-Type": "application/json",
-            "userIndex": 1,
+            "userIndex": 25,
         },
     })
         .then(response => response.data)
@@ -196,18 +196,24 @@ export async function postFindPassword(name, id, email) {
 
 //??????????????????????????????????
 
+
+
 export async function postCreateProject(id, team, name, teammate) {
-    return axios.post('/api/users/login', {
-        headers: {
-            "Content-Type": "application/json",
-            "token": 1
-        },
-        "subjectId": id,
+    return axios.post('/api/project', 
+        {
+        "subjectName": id,
         "projectTeam": team,
         "projectName": name,
         "team": teammate
-    }).catch( error =>{
+        },
+        { 
+            headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25
+            }
+        }).catch( error =>{
         console.log('failed',error)
+        throw error;
     })
 }
 

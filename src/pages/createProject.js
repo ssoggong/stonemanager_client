@@ -7,18 +7,30 @@ import {
 import './modal.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { postCreateProject } from './requestMapping';
 
 export async function getSubject() {
     return axios.get('/api/users/subject', {
         headers: {
             "Content-Type": "application/json",
             "userIndex": 25,
-
         },
     })
         .then(response => response.data)
         .then(body => body.data);
     console.log();
+}
+
+function listener(event) {
+    event.preventDefault();
+    let pSubject = document.getElementById('subjectName').value,
+        pName = document.getElementById('projectName').value,
+        pTeam = document.getElementById('teamName').value
+        // console.log(pSubject)
+        // console.log(pName)
+        // console.log(pTeam)
+        postCreateProject(pSubject, pTeam, pName, [])
+        
 }
 
 export class CreateProject extends React.Component {
@@ -46,7 +58,7 @@ export class CreateProject extends React.Component {
             handleClose,
             projectName,
             projectSubject,
-            projectProgress,
+            projectTeam,
             onChange,
             onCreate } = this.props;
         return (
@@ -65,7 +77,7 @@ export class CreateProject extends React.Component {
                 </Modal.Header>
                 <Modal.Body>
                     <p>
-                        <Form>
+                        <Form onSubmit={listener}>
                             <Form.Group controlId="subjectName">
                                 <Form.Label>과목명</Form.Label>
                                 <Form.Control as="select" defaultValue="Choose...">
@@ -101,11 +113,11 @@ export class CreateProject extends React.Component {
                             </Form.Group>
 
                             <div className="modalButtonCenter">
-                                <Link to='/'>
-                                    <Button onClick={onCreate} variant="primary" type="submit">
-                                        확인
+
+                                <Button onClick={handleClose} variant="primary" type="submit">
+                                    확인
                                 </Button>
-                                </Link>
+
                                 <Button onClick={handleClose} variant="secondary">
                                     취소
                                 </Button>
