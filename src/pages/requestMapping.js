@@ -15,7 +15,7 @@ export async function getProject() {
     return axios.get('/api/project', {
         headers: {
             "Content-Type": "application/json",
-            "userId": 1,
+            "userId": 25,
         },
     })
         .then(response => response.data)
@@ -26,7 +26,7 @@ export async function getUserInfo() {
     return axios.get('/api/users', {
         headers: {
             "Content-Type": "application/json",
-            "userIndex": 1,
+            "userIndex": 25,
         },
     })
         .then(response => response.data)
@@ -210,6 +210,8 @@ export async function postCreateProject(id, team, name, teammate) {
         console.log('failed',error)
     })
 }
+
+// 이 밑으로 형식 다름 위에께 맞는듯
 
 export async function postCreateSchedule(scheduleName, Date, Descript, Assignee, TagId) {
     return axios.post('/api/schedule', {
