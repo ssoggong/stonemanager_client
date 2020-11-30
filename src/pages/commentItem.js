@@ -20,8 +20,8 @@ const Remove = styled.div`
 const TodoItemBlock = styled.div`
   display: flex;
   align-items: center;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   &:hover {
     ${Remove} {
       opacity: 1;
@@ -30,44 +30,47 @@ const TodoItemBlock = styled.div`
 `;
 
 const CheckCircle = styled.div`
-  width: 16px;
-  height: 16px;
+  width: 26px;
+  height: 26px;
+  border-radius: 16px;
   border: 1px solid #ced4da;
   font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 20px;
-  cursor: pointer;
-  ${props =>
-    props.done &&
-    css`
-      border: 1px solid #1a83ff;
-      color: #1a83ff;
-    `}
+  background-color:white;
 `;
 
 const Text = styled.div`
   flex: 1;
-  font-size: 18px;
+  font-size: 21px;
   color: #495057;
   ${props =>
     props.done &&
     css`
       color: #ced4da;
     `}
+    .day {
+      color: #868e96;
+      font-size: 14px;
+    }
 `;
 
-function TodoItem({ id, done, text }) {
+function CommentItem({ id, done, text }) {
   const dispatch = useTodoDispatch();
-  const onToggle = () => dispatch({ type: 'TOGGLE', id });
   const onRemove = () => dispatch({ type: 'REMOVE', id });
+  const today = new Date();
+  const dateString = today.toLocaleDateString('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+  const dayName = today.toLocaleDateString('ko-KR', { weekday: 'long' });
   return (
     <TodoItemBlock>
-      <CheckCircle done={done} onClick={onToggle}>
-        {done && <MdDone />}
-      </CheckCircle>
-      <Text done={done}>{text}</Text>
+      <CheckCircle />
+      <Text done={done}>{text}<span className='day'>{dateString} {'('}{dayName}{')'}</span></Text>
       <Remove onClick={onRemove}>
         <MdDelete />
       </Remove>
@@ -75,4 +78,4 @@ function TodoItem({ id, done, text }) {
   );
 }
 
-export default React.memo(TodoItem);
+export default CommentItem;

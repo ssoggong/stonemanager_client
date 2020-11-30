@@ -9,18 +9,14 @@ import $ from 'jquery';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import listPlugin from '@fullcalendar/list'
+import listPlugin from '@fullcalendar/list';
+import TodoHead from './todoHead';
 
 function schedule() {
     const events = [
-        {
-            title: '최종 발표', start: "2020-12-01T10:00:00",
-            end: "2020-12-01T12:00:00", backgroundColor: 'lightcoral'
-        },
-        { title: '정기 미팅', date: '2020-11-29', backgroundColor: 'lightsalmon' },
-        { title: 'event 1', date: '2020-11-25', backgroundColor: 'lightgreen' },
-        { title: 'event 2', date: '2020-11-26', backgroundColor: 'skyblue' },
-        { title: 'event 3', date: '2020-11-27', backgroundColor: 'lightpink' },
+        { title: '최종 발표', date: "2020-12-01", backgroundColor: 'lightcoral' },
+        { title: '정기 미팅', date: '2020-11-29', backgroundColor: 'purple' },
+        { title: 'event 1', date: '2020-11-25', backgroundColor: 'lightcoral' },
         { title: 'event 4', date: '2020-11-27', backgroundColor: 'orange' },
         { title: 'event 5', date: '2020-11-28', backgroundColor: 'purple' }
     ];
@@ -44,7 +40,6 @@ function schedule() {
                     }}
                     eventClick={
                         function (arg) {
-
                             $("#myModal2").modal("show");
                             $(".modal-body").html("");
                             $(".modal-body").html(
@@ -104,7 +99,8 @@ function schedule() {
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">확인</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">삭제</button>
                         </div>
                     </div>
                 </div>

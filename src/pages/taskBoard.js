@@ -100,7 +100,7 @@ function TaskBoard() {
                         style={{
                           background: snapshot.isDraggingOver
                             ? "#7ebaff"
-                            : "#dfdfdf",
+                            : "#ececec",
                           padding: 20,
                           width: 250,
                           minHeight: 500
@@ -123,7 +123,7 @@ function TaskBoard() {
                                         style={{
                                         userSelect: "none",
                                         padding: 16,
-                                        margin: "0 0 8px 0",
+                                        margin: "16px 16px 16px 16px",
                                         minHeight: "100px",
                                         backgroundColor: snapshot.isDragging
                                             ? "#1a83ff"

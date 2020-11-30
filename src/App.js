@@ -4,6 +4,7 @@ import {BrowserRouter, Route } from 'react-router-dom';
 
 import { Main, MyPage, Home} from './pages'
 import InviteOk from './pages/inviteOk';
+import FindPW from './pages/findPassword';
 
 class App extends Component {
     constructor(props){
@@ -25,6 +26,7 @@ class App extends Component {
                     <Route path="/taskBoard" component={Home} />
                     <Route path="/taskDetail" component={Home} />
                     <Route path="/inviteOk" component={InviteOk} />
+                    <Route path="/findPassword" component={FindPW} />
                     {
                         /**
                          * Path 매칭 실패 시 디폴트 Path로 리다이렉트하는 구문

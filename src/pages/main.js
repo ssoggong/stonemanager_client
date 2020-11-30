@@ -83,7 +83,7 @@ function Main() {
             <Navbar bg="primary" variant="dark">
                 <Link to='#'>
                     <Navbar.Brand>
-                        <b>Stone Manag  er</b>
+                        <b>Stone Manager</b>
                     </Navbar.Brand>
                 </Link>
                 <Nav className="mr-auto">
@@ -181,7 +181,6 @@ function Main() {
 
         </div>
     );
-
 }
 
 export default Main;
