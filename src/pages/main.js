@@ -27,10 +27,11 @@ function Main() {
         });
     };
 
+    const [userIndex, setUserIndex] = useState(0);
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
-        getHome()
+        getHome( userIndex )
             .then(data => {
                 setProjects(data.projectInfo);
             })
@@ -68,18 +69,21 @@ function Main() {
             .then(data => {
                 setLogined(true);
                 setLoginDialogVisible(false);
+                setUserIndex(data.userIndex)
             })
             .catch(() => {
                 alert('로그인 실패.')
             })
     }
+    console.log(userIndex);
+    console.log(projects);
 
     return (
         <div className="main">
             <Navbar bg="primary" variant="dark">
                 <Link to='#'>
                     <Navbar.Brand>
-                        <b>Stone Manager</b>
+                        <b>Stone Manag  er</b>
                     </Navbar.Brand>
                 </Link>
                 <Nav className="mr-auto">
@@ -141,10 +145,11 @@ function Main() {
                                     <Form.Group controlId="password">
                                         <Form.Control type="password" placeholder="비밀번호 입력"/>
                                     </Form.Group>
-
+                                    
                                     <Button variant="primary" type="submit">
                                         로그인
                                     </Button>
+                                   
                                 </Form>
                             </p>
 
