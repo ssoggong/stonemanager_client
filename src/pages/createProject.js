@@ -12,11 +12,12 @@ export async function getSubject() {
     return axios.get('/api/users/subject', {
         headers: {
             "Content-Type": "application/json",
-            "userIndex": 1,
+            "userIndex": 2,
         },
     })
         .then(response => response.data)
         .then(body => body.data);
+    console.log();
 }
 
 export class CreateProject extends React.Component {
