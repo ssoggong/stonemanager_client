@@ -1,16 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Nav, Navbar, Form, Button, Container, Row, Col } from 'react-bootstrap'
+import { Nav, Navbar, Form, Button, Container, Row, Col, Modal } from 'react-bootstrap'
 import {
     Route,
     Link,
     BrowserRouter,
 } from 'react-router-dom';
-import { Login } from './login.js'
 import { Register } from "./register";
 import { FindPW } from "./findPassword";
 import { CreateProject } from "./createProject";
 import ProjectList from './ProjectList';
-import { getHome } from './requestMapping';
+import { getHome, postLogin } from './requestMapping';
 
 function Main() {
     const [inputs, setInputs] = useState({
@@ -58,6 +57,22 @@ function Main() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [ loginDialogVisible, setLoginDialogVisible ] = useState(false);
+    const [ logined, setLogined ] = useState(false);
+
+    const login = (event) => {
+        event.preventDefault();
+        const id = document.getElementById('id').value;
+        const pw = document.getElementById('password').value;
+        postLogin(id, pw)
+            .then(data => {
+                setLogined(true);
+                setLoginDialogVisible(false);
+            })
+            .catch(() => {
+                alert('로그인 실패.')
+            })
+    }
 
     return (
         <div className="main">
@@ -71,13 +86,22 @@ function Main() {
 
                 </Nav>
                 <Form inline>
-                    <Link to="/register">
-                        <Button variant="outline-light">회원가입</Button>
-                    </Link>
-                    &nbsp;&nbsp;
-                        <Link to="/login">
-                        <Button variant="outline-light">로그인</Button>
-                    </Link>
+                    {
+                        logined
+                            ?
+                            <React.Fragment>
+                                <Button href='myPage' variant="outline-light">마이페이지</Button>&nbsp;&nbsp;
+                                <Button onClick={() => setLogined(false)} variant="outline-light">로그아웃</Button>
+                            </React.Fragment>
+                            :
+                            <React.Fragment>
+                                <Link to="/register">
+                                    <Button variant="outline-light">회원가입</Button>
+                                </Link>
+                                &nbsp;&nbsp;
+                                <Button onClick={() => setLoginDialogVisible(true)} variant="outline-light">로그인</Button>
+                            </React.Fragment>
+                    }
                 </Form>
             </Navbar>
 
@@ -92,6 +116,47 @@ function Main() {
                 </Row>
             </Container>
 
+            {
+                loginDialogVisible
+                &&
+                <div>
+                    <Modal
+                        show={true}
+                        onHide={() => setLoginDialogVisible(false)}
+                        dialogClassName="modal-90w"
+                        aria-labelledby="example-custom-modal-styling-title"
+                    >
+                        <Modal.Header closeButton>
+                            <Modal.Title id="example-custom-modal-styling-title">
+                                STONE MANAGER
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <p>
+                                <Form onSubmit={login}>
+                                    <Form.Group controlId="id">
+                                        <Form.Control type="text" placeholder="학번 입력"/>
+                                    </Form.Group>
+
+                                    <Form.Group controlId="password">
+                                        <Form.Control type="password" placeholder="비밀번호 입력"/>
+                                    </Form.Group>
+
+                                    <Button variant="primary" type="submit">
+                                        로그인
+                                    </Button>
+                                </Form>
+                            </p>
+
+                            <Link to="/findPassword"><Button variant="link">비밀번호 찾기</Button></Link>{' | '}
+                            <Link to="/register"><Button variant="link">회원가입</Button></Link>
+
+
+                        </Modal.Body>
+                    </Modal>
+                </div>
+            }
+
             <BrowserRouter>
                 <Route
                     path="/createProject"
@@ -105,7 +170,6 @@ function Main() {
                         {...props} />}
                 />
                 {/* <Route path="/createProject" component={CreateProject} /> */}
-                <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route path="/findPassword" component={FindPW} />
             </BrowserRouter>

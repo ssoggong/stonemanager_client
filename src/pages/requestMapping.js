@@ -309,6 +309,72 @@ export async function postTaskTag(name, color) {
     })
 }
 
+//**************************************************
+
+export async function deleteProject() {
+    return axios.delete('/api/project/{projectIndex}', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25,
+        },
+    })
+}
+
+export async function deleteSchedule(projectIndex,scheduleIndex) {
+    return axios.delete('/api/schedule', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25,
+            "projectIndex": projectIndex,
+            "scheduleIndex": scheduleIndex,
+        },
+    })
+}
+
+export async function deleteTask(projectIndex,taskIndex) {
+    return axios.delete('/api/task', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25,
+            "projectIndex": projectIndex,
+            "taskIndex": taskIndex,
+        },
+    })
+}
+export async function deleteChecklist(projectIndex,taskIndex,checklistIndex) {
+    return axios.delete('/api/checklist', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25,
+            "projectIndex": projectIndex,
+            "taskIndex": taskIndex,
+            "checklistIndex": checklistIndex,
+        },
+    })
+}
+
+export async function deleteTag(projectIndex,taskIndex) {
+    return axios.delete('/api/tasktag/{tagIndex}', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25,
+            "projectIndex": projectIndex,
+            "taskIndex": taskIndex,
+        },
+    })
+}
+
+export async function deleteFile(projectIndex,taskIndex) {
+    return axios.delete('/api/file/{fileIndex}', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25,
+            "projectIndex": projectIndex,
+            "taskIndex": taskIndex,
+        },
+    })
+}
+
 
 //DELETE : 프로젝트 탈퇴 / 일정삭제 /할일삭제 /체크삭제 /첨부삭제/코멘트 삭제
 //비밀번호 변경/프사 변경/일정변경/태그변경/태그삭제/할일변경/체크변경/코멘트변경 : PUT
