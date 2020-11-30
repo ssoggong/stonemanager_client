@@ -1,10 +1,21 @@
 import axios from "axios";
 
+export async function getSubject() {
+    return axios.get('/api/users/subject', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 1,
+        },
+    })
+        .then(response => response.data)
+        .then(body => body.data);
+}
+
 export async function getProject() {
     return axios.get('/api/project', {
         headers: {
             "Content-Type": "application/json",
-            "userId": 1,
+            "userId": 25,
         },
     })
         .then(response => response.data)
@@ -15,7 +26,7 @@ export async function getUserInfo() {
     return axios.get('/api/users', {
         headers: {
             "Content-Type": "application/json",
-            "userIndex": 1,
+            "userIndex": 25,
         },
     })
         .then(response => response.data)
@@ -26,7 +37,7 @@ export async function getHome() {
     return axios.get('/api/home', {
         headers: {
             "Content-Type": "application/json",
-            "userIndex": 1,
+            "userIndex": 25,
         },
     })
         .then(response => response.data)
@@ -34,10 +45,10 @@ export async function getHome() {
 }
 
 export async function getProjectHome() {
-    return axios.get('/api/project/{projectIndex}', {
+    return axios.get('/api/project/31', {
         headers: {
             "Content-Type": "application/json",
-            "userIndex": 1,
+            "userIndex": 25,
         },
     })
         .then(response => response.data)
@@ -120,14 +131,14 @@ export async function getTaskTag() {
 // *********************************************************************************
 
 export async function postLogin(id, pw) {
-    return axios.post('/api/users/login', {
-        headers: {
-            "Content-Type": "application/json",
-            "token": 1
-        },
+    return axios.post(
+        '/api/users/login',
+        {
         "userId": id,
         "password": pw
-    }).catch( error =>{
+        },
+        { headers : {"Content-Type": "application/json"} }
+    ).catch( error =>{
         console.log('failed',error)
     })
 }
@@ -185,20 +196,28 @@ export async function postFindPassword(name, id, email) {
 
 //??????????????????????????????????
 
+
+
 export async function postCreateProject(id, team, name, teammate) {
-    return axios.post('/api/users/login', {
-        headers: {
-            "Content-Type": "application/json",
-            "token": 1
-        },
-        "subjectId": id,
+    return axios.post('/api/project', 
+        {
+        "subjectName": id,
         "projectTeam": team,
         "projectName": name,
         "team": teammate
-    }).catch( error =>{
+        },
+        { 
+            headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25
+            }
+        }).catch( error =>{
         console.log('failed',error)
+        throw error;
     })
 }
+
+// 이 밑으로 형식 다름 위에께 맞는듯
 
 export async function postCreateSchedule(scheduleName, Date, Descript, Assignee, TagId) {
     return axios.post('/api/schedule', {

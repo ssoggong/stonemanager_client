@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Nav, Navbar, Form, Button, Container, Row, Col } from 'react-bootstrap'
 import {
     Route,
@@ -10,14 +10,16 @@ import { Register } from "./register";
 import { FindPW } from "./findPassword";
 import { CreateProject } from "./createProject";
 import ProjectList from './ProjectList';
+import { getHome } from './requestMapping';
 
 function Main() {
     const [inputs, setInputs] = useState({
         projectName: '',
         projectSubject: '',
-        projectProgress: ''
+        projectTeam: ''
     });
-    const { projectName, projectSubject, projectProgress } = inputs;
+    const { projectName, projectSubject, projectTeam } = inputs;
+
     const onChange = e => {
         const { name, value } = e.target;
         setInputs({
@@ -25,12 +27,15 @@ function Main() {
             [name]: value
         });
     };
-    const [projects, setProjects] = useState([
-        { projectIndex: 1, projectName: "쏘꽁", projectSubject: "소프트웨어공학개론", projectProgress: 90 },
-        { projectIndex: 2, projectName: "일쩜오", projectSubject: "개별연구", projectProgress: 99 },
-        { projectIndex: 3, projectName: "응답하라2016", projectSubject: "기업사회맞춤형프로젝트1", projectProgress: 50 },
-        { projectIndex: 4, projectName: "살려주세요", projectSubject: "임베디드소프트웨어", projectProgress: 78 }
-    ]);
+
+    const [projects, setProjects] = useState([]);
+
+    useEffect(() => {
+        getHome()
+            .then(data => {
+                setProjects(data.projectInfo);
+            })
+    }, [])
 
     const nextId = useRef(5);
     const onCreate = () => {
@@ -38,14 +43,14 @@ function Main() {
             projectIndex: nextId.current,
             projectName,
             projectSubject,
-            projectProgress
+            projectTeam
         };
         setProjects(projects.concat(project));
 
         setInputs({
             projectName: '',
             projectSubject: '',
-            projectProgress: ''
+            projectTeam: ''
         });
         nextId.current += 1;
     };
@@ -53,6 +58,7 @@ function Main() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
     return (
         <div className="main">
             <Navbar bg="primary" variant="dark">
@@ -77,7 +83,7 @@ function Main() {
 
             <Container>
                 <ProjectList projects={projects} />
-                <Row style={{ marginLeft: 470, marginTop: 50}}>
+                <Row style={{ marginLeft: 470, marginTop: 50 }}>
                     <Col sm>
                         <Link to="/createProject">
                             <Button onClick={handleShow} variant="primary">New Proejct</Button>
@@ -91,7 +97,7 @@ function Main() {
                     path="/createProject"
                     render={(props) => <CreateProject projectName={projectName}
                         projectSubject={projectSubject}
-                        projectProgress={projectProgress}
+                        projectTeam={projectTeam}
                         onChange={onChange}
                         onCreate={onCreate}
                         show={show}
