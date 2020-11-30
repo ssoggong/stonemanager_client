@@ -1,5 +1,16 @@
 import axios from "axios";
 
+export async function getSubject() {
+    return axios.get('/api/users/subject', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 1,
+        },
+    })
+        .then(response => response.data)
+        .then(body => body.data);
+}
+
 export async function getProject() {
     return axios.get('/api/project', {
         headers: {
@@ -120,14 +131,14 @@ export async function getTaskTag() {
 // *********************************************************************************
 
 export async function postLogin(id, pw) {
-    return axios.post('/api/users/login', {
-        headers: {
-            "Content-Type": "application/json",
-            "token": 1
-        },
+    return axios.post(
+        '/api/users/login',
+        {
         "userId": id,
         "password": pw
-    }).catch( error =>{
+        },
+        { headers : {"Content-Type": "application/json"} }
+    ).catch( error =>{
         console.log('failed',error)
     })
 }

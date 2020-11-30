@@ -9,6 +9,15 @@ import {
     BrowserRouter,
 } from "react-router-dom";
 
+import {postLogin} from './requestMapping'
+
+function listener(event){
+    event.preventDefault();
+    let id = document.getElementById('id').value,
+        pw = document.getElementById('password').value
+    postLogin(id, pw)
+}
+
 export function Login() {
     return (
         <div>
@@ -25,7 +34,7 @@ export function Login() {
                 </Modal.Header>
                 <Modal.Body>
                     <p>
-                        <Form>
+                        <Form onSubmit={listener}>
                             <Form.Group controlId="id">
                                 <Form.Control type="text" placeholder="학번 입력"/>
                             </Form.Group>
