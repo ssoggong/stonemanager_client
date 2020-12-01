@@ -5,7 +5,7 @@ import {BrowserRouter, Route } from 'react-router-dom';
 import { Main, MyPage, Home} from './pages'
 import InviteOk from './pages/inviteOk';
 import FindPW from './pages/findPassword';
-
+import Start from './pages/start';
 class App extends Component {
     constructor(props){
         super(props)
@@ -19,10 +19,13 @@ class App extends Component {
                 <BrowserRouter>
                     <Route path="/createProject" component={Main}/>
                     <Route path="/register" component={Main} />
-                    <Route path="/" component={Main} exact />
+                    <Route path="/" component={Start} exact />
+                    <Route path="/main" component={Main} exact />
                     <Route path="/myPage" component={MyPage} />
                     <Route path="/home" component={Home} />
                     <Route path="/schedule" component={Home} />
+                    <Route path="/schedulle" component={Home} />
+                    <Route path="/schedullle" component={Home} />
                     <Route path="/taskBoard" component={Home} />
                     <Route path="/taskDetail" component={Home} />
                     <Route path="/inviteOk" component={InviteOk} />
