@@ -38,7 +38,7 @@ export async function getHome( {userIndex} ) {
     return axios.get('/api/home', {
         headers: {
             "Content-Type": "application/json",
-            "userIndex": 25,
+            "userIndex": userIndex,
         },
     })
         .then(response => response.data)

@@ -11,14 +11,15 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import TodoHead from './todoHead';
+import {Link} from 'react-router-dom';
 
 function schedule() {
     const events = [
-        { title: '최종 발표', date: "2020-12-01", backgroundColor: 'lightcoral' },
-        { title: '정기 미팅', date: '2020-11-29', backgroundColor: 'purple' },
-        { title: 'event 1', date: '2020-11-25', backgroundColor: 'lightcoral' },
-        { title: 'event 4', date: '2020-11-27', backgroundColor: 'orange' },
-        { title: 'event 5', date: '2020-11-28', backgroundColor: 'purple' }
+        { title: '최종 발표', date: "2020-12-05", backgroundColor: 'lightgreen'},
+        { title: '최종보고서작성', date: '2020-12-07', backgroundColor: 'lightgreen' },
+        { title: '코딩', date: '2020-12-03', backgroundColor: 'lightblue' },
+        { title: '테스팅', date: '2020-12-02', backgroundColor: 'lightblue' },
+        { title: '회의', date: '2020-11-28', backgroundColor: 'lightcoral' }
     ];
     // const today = new Date();
     // const dateString = today.toLocalDateString('ko-KR', {
@@ -63,7 +64,9 @@ function schedule() {
                     events={events}
                     locale="ko"
                 />
+                
             </div>
+            
             <div class="modal" id="myModal">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -74,11 +77,10 @@ function schedule() {
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="modal-body text-center">
-                            asd
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">확인 </button>
+                            <Link to='/schedulle'><button type="button" class="btn btn-primary">확인 </button></Link>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">취소 </button>
                         </div>
                     </div>

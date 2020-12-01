@@ -34,7 +34,7 @@ function HomeContent() {
     const options = {
         animationEnabled: true,
         subtitles: [{
-            text: contents.projectName,
+            text: "최고운 30%",
             verticalAlign: "center",
             fontSize: 24,
             dockInsidePlotArea: true
@@ -44,7 +44,12 @@ function HomeContent() {
             showInLegend: true,
             indexLabel: "{name}: {y}",
             yValueFormatString: "#,###'%'",
-            dataPoints: [ {name: "최윤호", y:100}]
+            dataPoints: [ 
+                {name: "최윤호", y:23},
+                {name: "박종근", y:23},
+                {name: "최고운", y:30},
+                {name: "김영훈", y:23}
+        ]
 
         }]
     }
@@ -61,8 +66,8 @@ function HomeContent() {
                     <Col sm>
                         <ProgressBar
                             style={{ width: 700, marginTop: 15, marginRight: 50 }}
-                            now={contents.projectProgress}
-                            label={`${contents.projectProgress}%`} />
+                            now={42.9}
+                            label={`${42.9}%`} />
                         {/* contents.projectProgress */}
                     </Col>
                 </Row>
@@ -79,7 +84,7 @@ function HomeContent() {
                     <Col sm={3}>
                         <Card style={{ width: '15rem', display: 'flex' }}>
                             <Card.Body>
-                                <Card.Title>코딩 완료</Card.Title>
+                                <Card.Title>테스팅</Card.Title>
                                 <Button variant="danger">D-1</Button>
                             </Card.Body>
                         </Card>
@@ -87,7 +92,7 @@ function HomeContent() {
                     <Col sm={3}>
                         <Card style={{ width: '15rem', display: 'flex' }}>
                             <Card.Body>
-                                <Card.Title>정기 미팅</Card.Title>
+                                <Card.Title>코딩</Card.Title>
                                 <Button variant="warning">D-2</Button>
                             </Card.Body>
                         </Card>

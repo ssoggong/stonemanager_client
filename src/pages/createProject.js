@@ -113,9 +113,11 @@ export class CreateProject extends React.Component {
 
                             <div className="modalButtonCenter">
 
+                                
                                 <Button onClick={handleClose} variant="primary" type="submit">
                                     확인
                                 </Button>
+                            
 
                                 <Button onClick={handleClose} variant="secondary">
                                     취소
