@@ -73,7 +73,7 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
-function TodoCreate() {
+function CommentCreate() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState('');
 
@@ -104,7 +104,7 @@ function TodoCreate() {
           <InsertForm onSubmit={onSubmit}>
             <Input
               autoFocus
-              placeholder="할 일을 입력 후, Enter 를 누르세요"
+              placeholder="Comment를 입력 후, Enter 를 누르세요"
               onChange={onChange}
               value={value}
             />
@@ -118,4 +118,4 @@ function TodoCreate() {
   );
 }
 
-export default React.memo(TodoCreate);
+export default React.memo(CommentCreate);

@@ -7,30 +7,28 @@ import {
 } from 'react-router-dom';
 import {TaskDetail} from './taskDetail';
 
-const itemsFromBackend = [
-  { id: uuid(), content: "First task", manager: "최고운 최윤호", taskDate: "2020.12.01", tagName: "front-end", tagColor: "lightblue"},
-  { id: uuid(), content: "Second task", manager: "박종근", taskDate: "2020.12.02", tagName: "back-end", tagColor: "lightgreen" },
-  { id: uuid(), content: "Third task", manager: "김영훈 최윤호", taskDate: "2020.12.03", tagName: "homework", tagColor: "lightpink" },
-  { id: uuid(), content: "Fourth task", manager: "최고운 박종근", taskDate: "2020.12.04", tagName: "back-end", tagColor: "lightgreen" },
-  { id: uuid(), content: "Fifth task", manager: "최윤호 김영훈", taskDate: "2020.12.05", tagName: "front-end", tagColor: "lightblue" }
-];
 
 const columnsFromBackend = {
   [uuid()]: {
     name: "TO DO",
-    items: itemsFromBackend
+    items: [
+      { id: uuid(), content: "최종 발표", manager: "최고운 박종근", taskDate: "2020.12.05", tagName: "class", tagColor: "lightgreen" },
+      { id: uuid(), content: "최종보고서 작성", manager: "최고운 김영훈", taskDate: "2020.12.07", tagName: "class", tagColor: "lightgreen" }
+    ]
   },
   [uuid()]: {
     name: "In Progress",
-    items: []
+    items: [{ id: uuid(), content: "코딩", manager: "김영훈 최윤호", taskDate: "2020.12.03", tagName: "develop", tagColor: "lightblue" }]
   },
   [uuid()]: {
     name: "Completed",
-    items: []
+    items: [ { id: uuid(), content: "클래스 다이어그램", manager: "최고운 최윤호", taskDate: "2020.11.01", tagName: "class", tagColor: "lightgreen"},
+    { id: uuid(), content: "시퀀스 다이어그램", manager: "박종근 김영훈", taskDate: "2020.11.13", tagName: "class", tagColor: "lightgreen"},
+    { id: uuid(), content: "UI/UX 제작", manager: "최고운 최윤호", taskDate: "2020.11.30", tagName: "design", tagColor: "lightpink"}]
   },
   [uuid()]: {
     name: "Pending",
-    items: []
+    items: [{ id: uuid(), content: "테스팅", manager: "박종근", taskDate: "2020.12.02", tagName: "develop", tagColor: "lightblue" }]
   }
 };
 
@@ -100,7 +98,7 @@ function TaskBoard() {
                         style={{
                           background: snapshot.isDraggingOver
                             ? "#7ebaff"
-                            : "#dfdfdf",
+                            : "#ececec",
                           padding: 20,
                           width: 250,
                           minHeight: 500
@@ -123,7 +121,7 @@ function TaskBoard() {
                                         style={{
                                         userSelect: "none",
                                         padding: 16,
-                                        margin: "0 0 8px 0",
+                                        margin: "16px 16px 16px 16px",
                                         minHeight: "100px",
                                         backgroundColor: snapshot.isDragging
                                             ? "#1a83ff"

@@ -22,6 +22,7 @@ export function Project({ project }) {
 }
 
 function ProjectList( { projects } ) {
+    console.log(projects);
     return (
         <Row>
             {projects.map (project => (

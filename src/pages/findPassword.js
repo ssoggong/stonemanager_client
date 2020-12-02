@@ -54,3 +54,5 @@ export function FindPW() {
         // </>
     );
 }
+
+export default FindPW;

@@ -33,11 +33,12 @@ export async function getUserInfo() {
         .then(body => body.data);
 }
 
-export async function getHome() {
+
+export async function getHome( {userIndex} ) {
     return axios.get('/api/home', {
         headers: {
             "Content-Type": "application/json",
-            "userIndex": 25,
+            "userIndex": userIndex,
         },
     })
         .then(response => response.data)
@@ -138,7 +139,10 @@ export async function postLogin(id, pw) {
         "password": pw
         },
         { headers : {"Content-Type": "application/json"} }
-    ).catch( error =>{
+    )
+        .then(response => response.data)
+        .then(body => body.data)
+        .catch( error =>{
         console.log('failed',error)
     })
 }
@@ -306,6 +310,72 @@ export async function postTaskTag(name, color) {
         "tagColor": color
     }).catch( error =>{
         console.log('failed',error)
+    })
+}
+
+//**************************************************
+
+export async function deleteProject() {
+    return axios.delete('/api/project/{projectIndex}', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25,
+        },
+    })
+}
+
+export async function deleteSchedule(projectIndex,scheduleIndex) {
+    return axios.delete('/api/schedule', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25,
+            "projectIndex": projectIndex,
+            "scheduleIndex": scheduleIndex,
+        },
+    })
+}
+
+export async function deleteTask(projectIndex,taskIndex) {
+    return axios.delete('/api/task', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25,
+            "projectIndex": projectIndex,
+            "taskIndex": taskIndex,
+        },
+    })
+}
+export async function deleteChecklist(projectIndex,taskIndex,checklistIndex) {
+    return axios.delete('/api/checklist', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25,
+            "projectIndex": projectIndex,
+            "taskIndex": taskIndex,
+            "checklistIndex": checklistIndex,
+        },
+    })
+}
+
+export async function deleteTag(projectIndex,taskIndex) {
+    return axios.delete('/api/tasktag/{tagIndex}', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25,
+            "projectIndex": projectIndex,
+            "taskIndex": taskIndex,
+        },
+    })
+}
+
+export async function deleteFile(projectIndex,taskIndex) {
+    return axios.delete('/api/file/{fileIndex}', {
+        headers: {
+            "Content-Type": "application/json",
+            "userIndex": 25,
+            "projectIndex": projectIndex,
+            "taskIndex": taskIndex,
+        },
     })
 }
 
