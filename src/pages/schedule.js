@@ -80,7 +80,7 @@ function schedule() {
                         </div>
 
                         <div class="modal-footer">
-                            <Link to='/schedulle'><button type="button" class="btn btn-primary">확인 </button></Link>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">확인 </button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">취소 </button>
                         </div>
                     </div>
