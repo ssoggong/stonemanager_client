@@ -24,8 +24,6 @@ class App extends Component {
                     <Route path="/myPage" component={MyPage} />
                     <Route path="/home" component={Home} />
                     <Route path="/schedule" component={Home} />
-                    <Route path="/schedulle" component={Home} />
-                    <Route path="/schedullle" component={Home} />
                     <Route path="/taskBoard" component={Home} />
                     <Route path="/taskDetail" component={Home} />
                     <Route path="/inviteOk" component={InviteOk} />

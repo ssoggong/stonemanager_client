@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Alert, Container, Nav, Navbar, Form, Row, Col, Button, Modal} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import {getProject, getUserInfo} from './requestMapping';
-import imgA from './profileImg.jpeg';
 
 
 class MyPage extends Component {
@@ -103,7 +102,7 @@ class MyPage extends Component {
                                         <b>사진</b>
                                     </Row>
                                     <Row>
-                                        <img src={imgA} style={{width:150, height:150}}/>
+                                        <img src style={{width:150, height:150}}/>
                                     </Row>
                                 </Col>
                                 <Col xs={3}>
