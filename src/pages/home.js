@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomeContent from './homeContent';
 import Schedule from './schedule';
 import TaskBoard from './taskBoard';
-import { TaskDetail } from './taskDetail';
 
 function Home() {
     return (

@@ -11,7 +11,7 @@ import { CreateProject } from "./createProject";
 import ProjectList from './ProjectList';
 import { getHome, postLogin } from './requestMapping';
 
-function Main() {
+function Start() {
     const [inputs, setInputs] = useState({
         projectName: '',
         projectSubject: '',
@@ -27,7 +27,7 @@ function Main() {
         });
     };
 
-    const [userIndex, setUserIndex] = useState(25);
+    const [userIndex, setUserIndex] = useState(0);
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
@@ -146,9 +146,11 @@ function Main() {
                                         <Form.Control type="password" placeholder="비밀번호 입력"/>
                                     </Form.Group>
                                     
+                                    <Link to='/main'>
                                     <Button variant="primary" type="submit">
                                         로그인
                                     </Button>
+                                    </Link>
                                    
                                 </Form>
                             </p>
@@ -183,4 +185,4 @@ function Main() {
     );
 }
 
-export default Main;
+export default Start;

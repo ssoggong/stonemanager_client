@@ -1,8 +1,68 @@
 import React, { Component } from 'react';
-import { Alert, Container, Nav, Navbar, Form, Row, Col, Button } from 'react-bootstrap'
+import {Alert, Container, Nav, Navbar, Form, Row, Col, Button, Modal} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import {getProject, getUserInfo} from './requestMapping';
+
 
 class MyPage extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            userEmail: '',
+            userImage: '',
+            userName: '',
+            userStudentId: '',
+            deleteDialogVisible: false,
+            projects: [],
+        };
+    }
+
+    componentDidMount() {
+        getUserInfo()
+            .then(data => {
+                this.setState({
+                    ...this.state,
+                    ...data,
+                });
+            });
+    }
+
+    toggleDialog(toggle) {
+        if (toggle) {
+            getProject()
+                .then(data => {
+                    this.setState({
+                        ...this.state,
+                        projects: data.projects,
+                    });
+                })
+                .catch(() => {
+                    this.setState({
+                        ...this.state,
+                        projects: [
+                            {
+                                projectIndex: 1,
+                                projectSubject: "소프트웨어공학개론",
+                                projectTeam: "쏘꽁",
+                                projectName: "StoneManager"
+                            },
+                            {
+                                projectIndex: 2,
+                                projectSubject: "공개SW프로젝트",
+                                projectTeam: "오히려좋아",
+                                projectName: "WEBRTC 화상회의"
+                            }
+                        ],
+                    });
+                })
+        }
+
+        this.setState({
+            ...this.state,
+            deleteDialogVisible: toggle,
+        });
+    }
 
     render() {
         return (
@@ -26,38 +86,82 @@ class MyPage extends Component {
                     <Button variant="outline-light">로그아웃</Button>
                     </Form>
                 </Navbar>
-                <Alert variant="primary"  style={{marginTop:150, marginLeft:350, width:1000}}>
-                    <Container>
-                    <p>
-                        <Row style={{ marginTop: 30, marginLeft: 100 }}>
-                            <Col>  <b> 내 프로필</b> </Col>
-                            <Col>  <b> 사진 </b> </Col>
-                            <Col xs={6}>
-                                <Row>
-                                    이름
+                <Container style={{ marginTop: 40 }}>
+                    내 프로필
+                    <Col xs={2}></Col>
+                    <Alert variant="primary">
+                        <Container>
+                            <Row>
+                                {/*<Col xs={3}>*/}
+                                {/*    <Row>*/}
+                                {/*        <b>내 프로필</b>*/}
+                                {/*    </Row>*/}
+                                {/*</Col>*/}
+                                <Col xs={3}>
+                                    <Row>
+                                        <b>사진</b>
+                                    </Row>
+                                    <Row>
+                                        <img src style={{width:150, height:150}}/>
+                                    </Row>
+                                </Col>
+                                <Col xs={3}>
+                                    <Row>이름</Row>
+                                    <Row>학번</Row>
+                                    <Row>이메일</Row>
+                                </Col>
+                                <Col xs={3}>
+                                    <Row>{this.state.userName}</Row>
+                                    <Row>{this.state.userStudentId}</Row>
+                                    <Row>{this.state.userEmail}</Row>
+                                </Col>
                             </Row>
-                                <Row>
-                                    학번
+                            <hr />
+                            <Row>
+                                <Col>
+                                    <Button onClick={() => this.toggleDialog(true)} variant="primary">프로젝트 탈퇴</Button>
+                                </Col>
                             </Row>
-                                <Row>
-                                    이메일
-                            </Row>
-                            </Col>
-                        </Row>
-                    </p>
-                    <hr />
-                    <p className="mb-0">
-                        <Row style={{ marginTop: 30, marginLeft: 100 }}>
-                            <Col sm={4}>  <b> 프로젝트 관리</b> </Col>
-                            <Col sm={8}>
-                                <Link to='#'>
-                                    <Button variant="primary">프로젝트 탈퇴</Button>
-                                </Link>
-                            </Col>
-                        </Row>
-                    </p>
-                    </Container>
-                </Alert>
+                        </Container>
+                    </Alert>
+                    <Col xs={2}></Col>
+                </Container>
+                <Modal
+                    show={this.state.deleteDialogVisible}
+                    onHide={() => this.toggleDialog(false)}
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title className="modaltitle" id="example-custom-modal-styling-title">
+                            프로젝트 탈퇴
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Row>진행중인 프로젝트 목록</Row>
+                        <hr />
+                        {
+                            this.state.projects
+                                .map(project => {
+                                    return (
+                                        <React.Fragment>
+                                            <Row>
+                                                <Col xs={9}>
+                                                    <Row>{project.projectSubject}</Row>
+                                                    <Row>
+                                                        <Col xs={2}></Col>
+                                                        <Col>{project.projectTeam}: {project.projectName}</Col>
+                                                    </Row>
+                                                </Col>
+                                                <Col xs={3}>
+                                                    <Button>나가기</Button>
+                                                </Col>
+                                            </Row>
+                                            <hr />
+                                        </React.Fragment>
+                                    )
+                                })
+                        }
+                    </Modal.Body>
+                </Modal>
             </div>
         );
     }

@@ -19,7 +19,7 @@ function Navbar_() {
           <Link to='#' className='menu-bars'>
             <FaIcons.FaBars onClick={showSidebar} />
           </Link>
-            <Navbar.Brand href="/" style={{marginLeft:15, margintop: 20, color:'white'}}><b>Stone Manager</b></Navbar.Brand>
+            <Navbar.Brand href="/main" style={{marginLeft:15, margintop: 20, color:'white'}}><b>Stone Manager</b></Navbar.Brand>
             <Nav className="mr-auto">
             </Nav>
             <Form inline>
